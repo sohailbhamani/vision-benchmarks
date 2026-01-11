@@ -7,8 +7,17 @@ This guide walks you through setting up a GPU-accelerated environment for vision
 - **NVIDIA Driver:** 580.82+ (Supports CUDA 13.0+)
 - **Python:** 3.11 or 3.12
 - **Hardware:** NVIDIA GPU (Ampere or newer recommended)
+- **Compiler Cache:** `ccache` (Recommended for PaddlePaddle performance)
 
-## 1. Create Virtual Environment
+## 1. System Dependencies
+
+Before creating the environment, install `ccache` to speed up compilation of deep learning extensions (like PaddlePaddle custom ops).
+
+```bash
+sudo apt update && sudo apt install -y ccache
+```
+
+## 2. Create Virtual Environment
 
 We use a standard Python virtual environment for isolation.
 
