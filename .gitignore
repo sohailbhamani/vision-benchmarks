@@ -42,4 +42,10 @@ htmlcov/
 
 # OS
 .DS_Store
-Thumbs.db
+
+# Model Weights
+*.pt
+*.pth
+*.onnx
+*.engine
+
