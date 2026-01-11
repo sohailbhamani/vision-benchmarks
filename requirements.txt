@@ -1,0 +1,29 @@
+# Core Vision AI Stack
+# Perfectly aligned for GPU acceleration on Linux (RTX 3090, CUDA 13.0 Driver)
+
+# PyTorch (CUDA 12.8 compatible)
+torch>=2.9.1
+torchvision>=0.24.1
+--index-url https://download.pytorch.org/whl/cu128
+
+# Inference Engines
+onnxruntime-gpu==1.23.2
+tensorrt
+
+# NVIDIA CUDA Runtime Libraries (Forced alignment)
+nvidia-cuda-runtime-cu12>=12.8.0
+nvidia-cuda-nvrtc-cu12>=12.8.0
+nvidia-cudnn-cu12>=9.0.0
+nvidia-nvtx-cu11  # Provides legacy libnvToolsExt.so.1 needed by Paddle
+
+# Vision Models
+ultralytics
+paddleocr
+paddlepaddle-gpu==3.1.0 --extra-index-url https://www.paddlepaddle.org.cn/packages/stable/cu123/
+
+# Utilities
+numpy<2.0.0
+opencv-python
+pytest
+pytest-cov
+ruff
