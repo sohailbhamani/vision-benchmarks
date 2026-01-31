@@ -48,11 +48,9 @@ def benchmark_latency(source=0, model_path="yolo11n.pt", frames=200):
             break
 
         # 2. Inference
-        t1 = time.perf_counter()
         _ = model(frame, verbose=False)
 
         # 3. Simulate Render/Display (draw boxes)
-        t2 = time.perf_counter()
         # _ = results[0].plot() # Unused, removed for linting
 
         # 4. Total Time

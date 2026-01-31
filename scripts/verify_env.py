@@ -6,7 +6,7 @@ import ultralytics
 from ultralytics import YOLO
 
 
-def check_cuda():
+def verify():
     print(f"Python Version: {sys.version}")
     print("-" * 20)
 
