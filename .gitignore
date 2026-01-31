@@ -48,4 +48,5 @@ htmlcov/
 *.pth
 *.onnx
 *.engine
+runs/
 
