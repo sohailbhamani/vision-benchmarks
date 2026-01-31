@@ -1,11 +1,12 @@
 import sys
-import torch
+
 import onnxruntime as ort
+import torch
 import ultralytics
 from ultralytics import YOLO
 
 
-def verify():
+def check_cuda():
     print(f"Python Version: {sys.version}")
     print("-" * 20)
 
@@ -51,7 +52,7 @@ def verify():
     print(f"Ultralytics Version: {ultralytics.__version__}")
     try:
         # Simple test load
-        model = YOLO("yolov8n.pt")
+        _ = YOLO("yolov8n.pt")
         print("Ultralytics YOLO model load: SUCCESS")
     except Exception as e:
         print(f"Ultralytics YOLO model load: FAILED: {e}")

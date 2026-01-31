@@ -1,6 +1,7 @@
-import cv2
-import time
 import argparse
+import time
+
+import cv2
 import numpy as np
 from ultralytics import YOLO
 
@@ -48,17 +49,17 @@ def benchmark_latency(source=0, model_path="yolo11n.pt", frames=200):
 
         # 2. Inference
         t1 = time.perf_counter()
-        results = model(frame, verbose=False)
+        _ = model(frame, verbose=False)
 
         # 3. Simulate Render/Display (draw boxes)
         t2 = time.perf_counter()
-        res_plotted = results[0].plot()
+        # _ = results[0].plot() # Unused, removed for linting
 
         # 4. Total Time
         t3 = time.perf_counter()
 
         total_latency = (t3 - t0) * 1000
-        inference_time = (t2 - t1) * 1000
+        # inference_time = (t2 - t1) * 1000 # Unused
 
         latencies.append(total_latency)
 
