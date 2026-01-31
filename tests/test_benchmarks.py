@@ -1,12 +1,14 @@
-import pytest
 import sys
 from pathlib import Path
+
+import pytest
 
 # Add project root to path
 sys.path.append(str(Path(__file__).parent.parent))
 
 from benchmarks.benchmark_accuracy import benchmark_accuracy
 from benchmarks.benchmark_yolo import benchmark_model
+
 # benchmark_webcam requires hardware, so we might skip it or mock it
 
 

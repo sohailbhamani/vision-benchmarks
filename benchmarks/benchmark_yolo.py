@@ -1,9 +1,10 @@
 import argparse
 import time
-import torch
-import numpy as np
-from ultralytics import YOLO
 from pathlib import Path
+
+import numpy as np
+import torch
+from ultralytics import YOLO
 
 # Benchmark Configuration
 MODELS = {
@@ -45,15 +46,15 @@ def benchmark_model(model_path, device="cuda", warmup=10, runs=100, fp16=False):
     latencies = []
 
     # Start Timer
-    start_global = time.perf_counter()
+    # start_global = time.perf_counter()
 
     for _ in range(runs):
         t0 = time.perf_counter()
-        results = model(img, verbose=False, half=fp16)
+        _ = model(img, verbose=False, half=fp16)
         t1 = time.perf_counter()
         latencies.append((t1 - t0) * 1000)  # ms
 
-    end_global = time.perf_counter()
+    # end_global = time.perf_counter()
 
     avg_latency = np.mean(latencies)
     fps = 1.0 / (avg_latency / 1000.0)
@@ -88,7 +89,7 @@ def main():
         # Download/Load
         try:
             path = download_if_missing(name) if name in MODELS else model_file
-        except:
+        except Exception:
             path = model_file  # file path passed directly
 
         # Run PyTorch Benchmark

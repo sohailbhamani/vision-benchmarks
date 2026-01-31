@@ -1,5 +1,5 @@
 import argparse
-import sys
+
 from ultralytics import YOLO
 
 
