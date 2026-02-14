@@ -17,36 +17,30 @@ Before creating the environment, install `ccache` to speed up compilation of dee
 sudo apt update && sudo apt install -y ccache
 ```
 
-## 2. Create Virtual Environment
+## 2. Shared Virtual Environment
 
-We use a standard Python virtual environment for isolation.
+All LocateLogic vision/AI projects share a single environment to avoid duplicating large GPU libraries (~10 GB+).
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
+# The shared environment lives at:
+source /mnt/devdisk/locatelogic_env/bin/activate
+
+# If setting up from scratch, create with:
+python3 -m venv /mnt/devdisk/locatelogic_env
+source /mnt/devdisk/locatelogic_env/bin/activate
 pip install --upgrade pip
-```
 
-## 2. Install Core AI Stack
-
-The installation requires specific index URLs to ensure CUDA 12.x compatibility across Torch, Paddle, and ONNX Runtime.
-
-```bash
-# Install Torch and Torchvision
+# Install Torch and Torchvision (CUDA 12.8)
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
 
 # Install PaddlePaddle GPU
 pip install paddlepaddle-gpu -i https://www.paddlepaddle.org.cn/packages/stable/cu123/ --extra-index-url https://pypi.org/simple
 
-# Install remaining dependencies from requirements.txt
+# Install remaining dependencies
 pip install -r requirements.txt
 ```
 
-### Why two index URLs?
-
-- **Torch** uses the pytorch.org index for `+cu128` wheels.
-- **Paddle** uses its own stable index for `cu123` compatible wheels.
-- We then align the runtime libraries during the requirements install.
+> **Note:** The shared env includes ultralytics 8.4+, TensorRT 10.15, and torch 2.10+cu128.
 
 ## 3. Verification
 

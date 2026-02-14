@@ -1,4 +1,4 @@
-ultralytics>=8.3.0
+ultralytics>=8.4.0
 onnxruntime-gpu
 tensorrt
 opencv-python-headless

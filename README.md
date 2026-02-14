@@ -45,12 +45,10 @@ We believe the AI/ML community benefits from open, reproducible benchmarks. This
 git clone https://github.com/sohailbhamani/vision-benchmarks.git
 cd vision-benchmarks
 
-# Setup Virtual Environment
-python3 -m venv venv
-source venv/bin/activate
+# Activate shared LocateLogic environment
+source /mnt/devdisk/locatelogic_env/bin/activate
 
 # Install Dependencies
-pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
