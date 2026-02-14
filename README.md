@@ -45,7 +45,7 @@ We believe the AI/ML community benefits from open, reproducible benchmarks. This
 git clone https://github.com/sohailbhamani/vision-benchmarks.git
 cd vision-benchmarks
 
-# Setup Virtual Environment
+# Create virtual environment
 python3 -m venv venv
 source venv/bin/activate
 
@@ -58,14 +58,21 @@ pip install -r requirements.txt
 
 ### 1. Speed Benchmark (FPS)
 
-Measures inference speed (Pre-process + Inference + Post-process).
+Measures inference speed (Pre-process + Inference + Post-process) across 10 models:
+YOLO11 (n/s/m/l), YOLOv12 (n/s), YOLO26 (n/s), YOLO-World (v8s/v8m).
 
 ```bash
-# Run all standard models (v11n, v11s, v11m, v8s-world, v8m-world)
+# PyTorch FP32 (all models)
+python3 benchmarks/benchmark_yolo.py --runs 100
+
+# PyTorch FP16
 python3 benchmarks/benchmark_yolo.py --runs 100 --fp16
 
+# TensorRT FP16 export + benchmark
+python3 benchmarks/benchmark_yolo.py --runs 100 --export
+
 # Run specific model
-python3 benchmarks/benchmark_yolo.py --model yolo11n.pt
+python3 benchmarks/benchmark_yolo.py --model yolo11n --runs 100
 ```
 
 ### 2. Accuracy Benchmark (mAP)

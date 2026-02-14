@@ -19,34 +19,24 @@ sudo apt update && sudo apt install -y ccache
 
 ## 2. Create Virtual Environment
 
-We use a standard Python virtual environment for isolation.
+We recommend a single shared environment for all vision/AI projects to avoid duplicating large GPU libraries (~10 GB+).
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install --upgrade pip
-```
 
-## 2. Install Core AI Stack
-
-The installation requires specific index URLs to ensure CUDA 12.x compatibility across Torch, Paddle, and ONNX Runtime.
-
-```bash
-# Install Torch and Torchvision
+# Install Torch and Torchvision (CUDA 12.8)
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
 
 # Install PaddlePaddle GPU
 pip install paddlepaddle-gpu -i https://www.paddlepaddle.org.cn/packages/stable/cu123/ --extra-index-url https://pypi.org/simple
 
-# Install remaining dependencies from requirements.txt
+# Install remaining dependencies
 pip install -r requirements.txt
 ```
 
-### Why two index URLs?
-
-- **Torch** uses the pytorch.org index for `+cu128` wheels.
-- **Paddle** uses its own stable index for `cu123` compatible wheels.
-- We then align the runtime libraries during the requirements install.
+> **Note:** Requires ultralytics 8.4+, TensorRT 10.x, and torch 2.x with CUDA support.
 
 ## 3. Verification
 
