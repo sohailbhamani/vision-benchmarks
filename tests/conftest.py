@@ -76,13 +76,7 @@ def sample_image_with_objects():
             y2 = 3 * height // 4
 
             # Different colors for each object
-            color = (
-                (255, 0, 0)
-                if i % 3 == 0
-                else (0, 255, 0)
-                if i % 3 == 1
-                else (0, 0, 255)
-            )
+            color = (255, 0, 0) if i % 3 == 0 else (0, 255, 0) if i % 3 == 1 else (0, 0, 255)
             draw.rectangle([x1, y1, x2, y2], fill=color, outline=(0, 0, 0), width=2)
 
         return img
@@ -111,9 +105,7 @@ def sample_image_with_text():
 
         # Use default font (PIL's built-in)
         try:
-            font = ImageFont.truetype(
-                "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", font_size
-            )
+            font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", font_size)
         except OSError:
             # Fallback to default font if DejaVu not available
             font = ImageFont.load_default()
