@@ -17,17 +17,13 @@ Before creating the environment, install `ccache` to speed up compilation of dee
 sudo apt update && sudo apt install -y ccache
 ```
 
-## 2. Shared Virtual Environment
+## 2. Create Virtual Environment
 
-All LocateLogic vision/AI projects share a single environment to avoid duplicating large GPU libraries (~10 GB+).
+We recommend a single shared environment for all vision/AI projects to avoid duplicating large GPU libraries (~10 GB+).
 
 ```bash
-# The shared environment lives at:
-source /mnt/devdisk/locatelogic_env/bin/activate
-
-# If setting up from scratch, create with:
-python3 -m venv /mnt/devdisk/locatelogic_env
-source /mnt/devdisk/locatelogic_env/bin/activate
+python3 -m venv venv
+source venv/bin/activate
 pip install --upgrade pip
 
 # Install Torch and Torchvision (CUDA 12.8)
@@ -40,7 +36,7 @@ pip install paddlepaddle-gpu -i https://www.paddlepaddle.org.cn/packages/stable/
 pip install -r requirements.txt
 ```
 
-> **Note:** The shared env includes ultralytics 8.4+, TensorRT 10.15, and torch 2.10+cu128.
+> **Note:** Requires ultralytics 8.4+, TensorRT 10.x, and torch 2.x with CUDA support.
 
 ## 3. Verification
 
