@@ -15,7 +15,7 @@ authors = [{name = "Sohail Bhamani"}]
 dev = [
     "pytest>=7.0.0",
     "pytest-cov>=4.0.0",
-    "ruff>=0.1.0",
+    "ruff>=0.15.10",
     "Pillow>=10.0.0",
     "numpy>=1.24.0",
     "ultralytics>=8.0.0",
